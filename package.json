@@ -1,0 +1,123 @@
+{
+	"name": "file-shortcuts",
+	"displayName": "File Shortcuts",
+	"description": "Save files as shortcuts for convenient access at a later date",
+	"publisher": "brandonfowler",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/BrandonXLF/file-shortcuts"
+	},
+	"homepage": "https://github.com/BrandonXLF/file-shortcuts",
+	"bugs": {
+		"url": "https://github.com/BrandonXLF/file-shortcuts/issues"
+	},
+	"icon": "media/icon.png",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.51.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "shortcuts.add",
+				"title": "Add Shortcut",
+				"icon": "$(add)"
+			},
+			{
+				"command": "shortcuts.remove",
+				"title": "Remove",
+				"icon": "$(close)"
+			},
+			{
+				"command": "shortcuts.open",
+				"title": "Open"
+			}
+		],
+		"views": {
+			"explorer": [
+				{
+					"id": "shortcuts",
+					"name": "Shortcuts",
+					"contextualTitle": "Shortcuts",
+					"icon": "media/icon.svg"
+				}
+			]
+		},
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "shortcuts.add",
+					"when": "!explorerResourceIsFolder",
+					"group": "7_modification"
+				}
+			],
+			"editor/title/context": [
+				{
+					"command": "shortcuts.add",
+					"when": "resourceSet",
+					"group": "7_modification"
+				}
+			],
+			"view/title": [
+				{
+					"command": "shortcuts.add",
+					"when": "view == shortcuts",
+					"group": "navigation@1"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "shortcuts.remove",
+					"when": "view == shortcuts && viewItem != top",
+					"group": "inline"
+				},
+				{
+					"command": "shortcuts.open",
+					"when": "view == shortcuts && viewItem != top",
+					"group": "navigation@1"
+				},
+				{
+					"command": "shortcuts.remove",
+					"when": "view == shortcuts && viewItem != top",
+					"group": "navigation@2"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "shortcuts.add",
+					"when": "false"
+				},
+				{
+					"command": "shortcuts.remove",
+					"when": "false"
+				},
+				{
+					"command": "shortcuts.open",
+					"when": "false"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.51.0",
+		"@typescript-eslint/eslint-plugin": "^4.1.1",
+		"@typescript-eslint/parser": "^4.1.1",
+		"eslint": "^7.9.0",
+		"typescript": "^4.0.2"
+	}
+}
