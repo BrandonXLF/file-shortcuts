@@ -22,7 +22,6 @@ export class Group extends vscode.TreeItem {
 			this.description = store.getAreaInfo(data).name;
 		
 		this.data = data;
-		this.iconPath = new vscode.ThemeIcon(store.getAreaInfo(data).icon);
 		this.contextValue = data.name ? 'group' : 'top';
 	}
 }

@@ -7,7 +7,6 @@ export enum StorageAreas {
 
 export type StorageArea = {
 	name: string;
-	icon: string;
 	store: vscode.Memento;
 };
 
@@ -15,12 +14,10 @@ export function areasFromContext(context: vscode.ExtensionContext): Record<Stora
 	return {
 		[StorageAreas.Workspace]: {
 			name: 'Workspace',
-			icon: 'home',
 			store: context.workspaceState
 		},
 		[StorageAreas.Global]: {
 			name: 'Global',
-			icon: 'globe',
 			store: context.globalState
 		}
 	};

@@ -101,11 +101,11 @@ export class GroupStore {
 		const areaChoice = await vscode.window.showQuickPick(
 			[
 				{
-					label: `$(${this.areas[StorageAreas.Workspace].icon}) ${this.areas[StorageAreas.Workspace].name}`,
+					label: this.areas[StorageAreas.Workspace].name,
 					area: StorageAreas.Workspace
 				},
 				{
-					label: `$(${this.areas[StorageAreas.Global].icon}) ${this.areas[StorageAreas.Global].name}`,
+					label: this.areas[StorageAreas.Global].name,
 					area: StorageAreas.Global
 				}
 			],

@@ -27,7 +27,8 @@ export class ShortcutManager {
 			const areaInfo = this.groupStore.getAreaInfo(groupData);
 			
 			return {
-				label: `$(${areaInfo.icon}) ${groupData.name || areaInfo.name}`,
+				label: groupData.name || areaInfo.name,
+				description: groupData.name ? areaInfo.name : undefined,
 				area: groupData.area,
 				index: groupData.index
 			};
@@ -42,7 +43,7 @@ export class ShortcutManager {
 			[
 				...options,
 				{ label: '', kind: -1 },
-				{ label: '$(add) New group' }
+				{ label: '$(add) Create new group...' }
 			],
 			{ placeHolder: 'Select a group' }
 		);
