@@ -73,16 +73,12 @@ async function addShortcut(e?: {fsPath: string}) {
 
 function removeShortcut(item: Group | Shortcut) {
 	if (item.type === ItemTypes.Group) {
-		const groups = groupStore.getInArea(item.data.area);
-		const newGroups = groups.filter(group => group.name !== item.data.name);
-		
-		areas[item.data.area].store.update('groups', newGroups);
+		groupStore.delete(item.data.area, item.data.index);
 	} else {
-		const groups = groupStore.getInArea(item.group.data.area);
-		
-		groups[item.group.data.index].items.splice(item.data.index, 1);
-		
-		areas[item.group.data.area].store.update('groups', groups);
+		const group = groupStore.getInArea(item.group.data.area)[item.group.data.index];
+
+		group.items.splice(item.data.index, 1);
+		groupStore.set(item.group.data.area, item.group.data.index, group);
 	}
 
 	nodeProvider.refresh();

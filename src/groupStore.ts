@@ -38,11 +38,11 @@ export class GroupStore {
 	
 	setInArea(area: StorageAreas, groups: GroupData[]) {
 		this.areas[area].store.update('groups', groups.map(group => {
-			let storedGroup: Partial<GroupData> = { ...group };
+			let storedGroup: Omit<GroupData, 'area' | 'index'> & Partial<GroupData> = { ...group };
 			
 			delete storedGroup.area;
 			delete storedGroup.index;
-			storedGroup.items!.forEach((item: Partial<ShortcutData>) => delete item.index);
+			storedGroup.items.forEach((item: Partial<ShortcutData>) => delete item.index);
 			
 			return storedGroup;
 		}));
@@ -53,6 +53,7 @@ export class GroupStore {
 		const global = this.getInArea(StorageAreas.Global);
 		const all = [];
 	
+		// Merge sorted GroupData arrays
 		let workspaceIndex = 0;
 		let globalIndex = 0;
 	
@@ -62,11 +63,7 @@ export class GroupStore {
 				global[globalIndex].name < workspace[workspaceIndex].name
 			);
 	
-			if (addFromGlobal) {
-				all[i] = global[globalIndex++];
-			} else {
-				all[i] = workspace[workspaceIndex++];
-			}
+			all[i] = addFromGlobal ? global[globalIndex++] : workspace[workspaceIndex++];
 		}
 	
 		return all;
@@ -80,6 +77,14 @@ export class GroupStore {
 		const groups = this.getInArea(area);
 		
 		groups[index] = group;
+		
+		this.setInArea(area, groups);
+	}
+	
+	delete(area: StorageAreas, index: number) {
+		const groups = this.getInArea(area);
+		
+		groups.splice(index, 1);
 		
 		this.setInArea(area, groups);
 	}
