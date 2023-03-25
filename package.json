@@ -39,6 +39,11 @@
 			{
 				"command": "shortcuts.open",
 				"title": "Open"
+			},
+			{
+				"command": "shortcuts.refresh",
+				"title": "Refresh Shortcuts",
+				"icon": "$(refresh)"
 			}
 		],
 		"views": {
@@ -71,6 +76,11 @@
 					"command": "shortcuts.add",
 					"when": "view == shortcuts",
 					"group": "navigation@1"
+				},
+				{
+					"command": "shortcuts.refresh",
+					"when": "view == shortcuts",
+					"group": "navigation@2"
 				}
 			],
 			"view/item/context": [
@@ -91,10 +101,6 @@
 				}
 			],
 			"commandPalette": [
-				{
-					"command": "shortcuts.add",
-					"when": "false"
-				},
 				{
 					"command": "shortcuts.remove",
 					"when": "false"

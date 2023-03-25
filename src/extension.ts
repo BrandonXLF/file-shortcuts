@@ -88,6 +88,10 @@ function openShortcut(e: Shortcut) {
 	vscode.commands.executeCommand('vscode.open', e.resourceUri);
 }
 
+function refreshShortcut() {
+	nodeProvider.refresh();
+}
+
 export function activate(localContext: vscode.ExtensionContext) {
 	context = localContext;
 	areas = areasFromContext(localContext);
@@ -98,6 +102,7 @@ export function activate(localContext: vscode.ExtensionContext) {
 		vscode.window.registerTreeDataProvider('shortcuts', nodeProvider),
 		vscode.commands.registerCommand('shortcuts.add', addShortcut),
 		vscode.commands.registerCommand('shortcuts.remove', removeShortcut),
-		vscode.commands.registerCommand('shortcuts.open', openShortcut)
+		vscode.commands.registerCommand('shortcuts.open', openShortcut),
+		vscode.commands.registerCommand('shortcuts.refresh', refreshShortcut)
 	);
 }
