@@ -9,7 +9,10 @@ export class ShortcutManager {
 		if (!files.length) {
 			let editor = vscode.window.activeTextEditor;
 			
-			if (!editor) return;
+			if (!editor) {
+				vscode.window.showErrorMessage('No file open to add as a shortcut.');
+				return;
+			}
 			
 			files[0] = editor.document.uri;
 		}
@@ -64,7 +67,6 @@ export class ShortcutManager {
 	addToGroup(group: GroupData, file: vscode.Uri) {
 		if (group.items.some(item => item.file === file.fsPath)) {
 			vscode.window.showErrorMessage('Group already contains that file.');
-			
 			return;
 		}
 	

@@ -118,7 +118,6 @@ export class GroupStore {
 	
 		if (groups.some(group => group.name === name)) {
 			vscode.window.showErrorMessage('A group with that name already exists in that area.');
-	
 			return;
 		}
 	
@@ -149,7 +148,6 @@ export class GroupStore {
 		
 		if (groups.some(group => group.name === newName)) {
 			vscode.window.showErrorMessage('A group with that name already exists in that area.');
-	
 			return;
 		}
 		
