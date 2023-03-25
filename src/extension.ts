@@ -10,8 +10,8 @@ let groupStore: GroupStore;
 let shortcutManager: ShortcutManager;
 let nodeProvider: ShortcutNodeProvider;
 
-async function addShortcut(e?: {fsPath: string}) {
-	await shortcutManager.create(e);
+async function addShortcut(_?: any, files?: vscode.Uri[]) {
+	await shortcutManager.add(files);
 	nodeProvider.refresh();
 }
 

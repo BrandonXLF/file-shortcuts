@@ -1,20 +1,18 @@
 import * as vscode from 'vscode';
-import { GroupStore } from "./groupStore";
+import { GroupData, GroupStore } from "./groupStore";
 import { StorageAreas } from './storageAreas';
 
 export class ShortcutManager {
 	constructor(public groupStore: GroupStore) { }
 	
-	async create(e?: {fsPath: string}): Promise<undefined> {
-		if (!e) {
+	async add(files: vscode.Uri[] = []): Promise<undefined> {
+		if (!files.length) {
 			let editor = vscode.window.activeTextEditor;
 			
 			if (!editor) return;
 			
-			e = editor.document.uri;
+			files[0] = editor.document.uri;
 		}
-	
-		let file = e.fsPath;
 		
 		type QuickPickOption = {
 			label: string;
@@ -59,17 +57,18 @@ export class ShortcutManager {
 			return;
 		
 		const group = this.groupStore.get(areaChoice.area, areaChoice.index);
+		files.forEach(file => this.addToGroup(group, file));
+	}
 	
-		if (group.items.some(item => item.file === file)) {
+	addToGroup(group: GroupData, file: vscode.Uri) {
+		if (group.items.some(item => item.file === file.fsPath)) {
 			vscode.window.showErrorMessage('Group already contains that file.');
 			
 			return;
 		}
 	
-		group.items.push({ file, index: NaN });
-		this.groupStore.set(areaChoice.area, areaChoice.index, group);
-		
-		return;
+		group.items.push({ file: file.fsPath, index: NaN });
+		this.groupStore.set(group.area, group.index, group);
 	}
 	
 	delete(area: StorageAreas, groupIndex: number, shortcutIndex: number) {
