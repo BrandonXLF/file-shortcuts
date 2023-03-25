@@ -33,7 +33,7 @@
 			},
 			{
 				"command": "shortcuts.rename",
-				"title": "Rename"
+				"title": "Rename..."
 			},
 			{
 				"command": "shortcuts.remove",
