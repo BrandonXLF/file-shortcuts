@@ -94,11 +94,6 @@
 					"group": "inline"
 				},
 				{
-					"command": "shortcuts.open",
-					"when": "view == shortcuts && viewItem != top",
-					"group": "navigation@1"
-				},
-				{
 					"command": "shortcuts.remove",
 					"when": "view == shortcuts && viewItem != top",
 					"group": "navigation@2"
