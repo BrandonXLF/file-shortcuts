@@ -71,12 +71,17 @@ async function addShortcut(e?: {fsPath: string}) {
 	nodeProvider.refresh();
 }
 
+async function renameGroup(item: Group) {
+	if (!await groupStore.rename(item.data.area, item.data.index)) return;
+	
+	nodeProvider.refresh();
+}
+
 function removeShortcut(item: Group | Shortcut) {
 	if (item.type === ItemTypes.Group) {
 		groupStore.delete(item.data.area, item.data.index);
 	} else {
-		const group = groupStore.getInArea(item.group.data.area)[item.group.data.index];
-
+		const group = groupStore.get(item.group.data.area, item.group.data.index);
 		group.items.splice(item.data.index, 1);
 		groupStore.set(item.group.data.area, item.group.data.index, group);
 	}
@@ -101,6 +106,7 @@ export function activate(localContext: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		vscode.window.registerTreeDataProvider('shortcuts', nodeProvider),
 		vscode.commands.registerCommand('shortcuts.add', addShortcut),
+		vscode.commands.registerCommand('shortcuts.rename', renameGroup),
 		vscode.commands.registerCommand('shortcuts.remove', removeShortcut),
 		vscode.commands.registerCommand('shortcuts.open', openShortcut),
 		vscode.commands.registerCommand('shortcuts.refresh', refreshShortcut)

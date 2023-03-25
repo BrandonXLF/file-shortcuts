@@ -32,6 +32,10 @@
 				"icon": "$(add)"
 			},
 			{
+				"command": "shortcuts.rename",
+				"title": "Rename"
+			},
+			{
 				"command": "shortcuts.remove",
 				"title": "Remove",
 				"icon": "$(close)"
@@ -98,6 +102,11 @@
 					"command": "shortcuts.remove",
 					"when": "view == shortcuts && viewItem != top",
 					"group": "navigation@2"
+				},
+				{
+					"command": "shortcuts.rename",
+					"when": "view == shortcuts && viewItem == group",
+					"group": "navigation@3"
 				}
 			],
 			"commandPalette": [

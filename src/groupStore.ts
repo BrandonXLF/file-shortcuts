@@ -117,7 +117,7 @@ export class GroupStore {
 		const groups = this.getInArea(areaChoice.area);
 	
 		if (groups.some(group => group.name === name)) {
-			vscode.window.showErrorMessage('That group already exists in that area.');
+			vscode.window.showErrorMessage('A group with that name already exists in that area.');
 	
 			return;
 		}
@@ -138,5 +138,24 @@ export class GroupStore {
 		this.setInArea(areaChoice.area, groups);
 		
 		return groupData;
+	}
+	
+	async rename(area: StorageAreas, index: number): Promise<boolean> {
+		const newName = await vscode.window.showInputBox({ placeHolder: 'Enter group name' });
+		
+		if (!newName) return false;
+		
+		const groups = this.getInArea(area);
+		
+		if (groups.some(group => group.name === newName)) {
+			vscode.window.showErrorMessage('A group with that name already exists in that area.');
+	
+			return false;
+		}
+		
+		groups[index].name = newName;
+		this.setInArea(area, groups);
+		
+		return true;
 	}
 }
