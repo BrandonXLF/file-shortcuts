@@ -11,13 +11,13 @@ let shortcutManager: ShortcutManager;
 let nodeProvider: ShortcutNodeProvider;
 
 async function addShortcut(e?: {fsPath: string}) {
-	if (await shortcutManager.create(e))
-		nodeProvider.refresh();
+	await shortcutManager.create(e);
+	nodeProvider.refresh();
 }
 
 async function renameGroup(item: Group) {
-	if (await groupStore.rename(item.data.area, item.data.index))
-		nodeProvider.refresh();
+	await groupStore.rename(item.data.area, item.data.index);
+	nodeProvider.refresh();
 }
 
 function removeShortcut(item: Group | Shortcut) {

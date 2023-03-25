@@ -5,11 +5,11 @@ import { StorageAreas } from './storageAreas';
 export class ShortcutManager {
 	constructor(public groupStore: GroupStore) { }
 	
-	async create(e?: {fsPath: string}): Promise<boolean> {
+	async create(e?: {fsPath: string}): Promise<undefined> {
 		if (!e) {
 			let editor = vscode.window.activeTextEditor;
 			
-			if (!editor) return false;
+			if (!editor) return;
 			
 			e = editor.document.uri;
 		}
@@ -32,7 +32,7 @@ export class ShortcutManager {
 				label: `$(${areaInfo.icon}) ${groupData.name || areaInfo.name}`,
 				area: groupData.area,
 				index: groupData.index
-			}
+			};
 		});
 		
 		options.splice(2, 0, {
@@ -49,27 +49,27 @@ export class ShortcutManager {
 			{ placeHolder: 'Select a group' }
 		);
 	
-		if (!areaChoice) return false;
+		if (!areaChoice) return;
 	
 		if (!('index' in areaChoice)) {
 			areaChoice = await this.groupStore.create();
 		}
 		
 		if (!areaChoice || !('index' in areaChoice))
-			return false;
+			return;
 		
 		const group = this.groupStore.get(areaChoice.area, areaChoice.index);
 	
 		if (group.items.some(item => item.file === file)) {
 			vscode.window.showErrorMessage('Group already contains that file.');
 			
-			return false;
+			return;
 		}
 	
 		group.items.push({ file, index: NaN });
 		this.groupStore.set(areaChoice.area, areaChoice.index, group);
 		
-		return true;
+		return;
 	}
 	
 	delete(area: StorageAreas, groupIndex: number, shortcutIndex: number) {
