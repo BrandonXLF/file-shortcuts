@@ -66,7 +66,9 @@ export class ShortcutNodeProvider implements vscode.TreeDataProvider<Group | Sho
 
 	async getChildren(element?: Group | Shortcut): Promise<(Group | Shortcut)[]> {
 		if (!element)
-			return this.groupStore.getAll().map(group => new Group(group, this.groupStore));
+			return this.groupStore.getAll()
+				.filter(group => group.name || group.items.length)
+				.map(group => new Group(group, this.groupStore));
 
 		if (!('items' in element.data)) return [];
 
