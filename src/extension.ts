@@ -10,8 +10,15 @@ let groupStore: GroupStore;
 let shortcutManager: ShortcutManager;
 let nodeProvider: ShortcutNodeProvider;
 
-async function addShortcut(_?: any, files?: vscode.Uri[]) {
-	await shortcutManager.add(files);
+async function addShortcut(file?: Object | vscode.Uri, files?: Object | Object[] | vscode.Uri[]) {
+	let addFiles: vscode.Uri[] = [];
+	
+	if (Array.isArray(files) && files[0] instanceof vscode.Uri)
+		addFiles = files as vscode.Uri[];
+	else if (file instanceof vscode.Uri)
+		addFiles = [file];
+	
+	await shortcutManager.add(addFiles);
 	nodeProvider.refresh();
 }
 
