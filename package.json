@@ -1,7 +1,7 @@
 {
 	"name": "file-shortcuts",
 	"displayName": "File Shortcuts",
-	"description": "Save files as shortcuts for convenient access at a later date",
+	"description": "Save files to a shortcut menu for convenient access",
 	"publisher": "brandonfowler",
 	"license": "MIT",
 	"repository": {
@@ -13,7 +13,7 @@
 		"url": "https://github.com/BrandonXLF/file-shortcuts/issues"
 	},
 	"icon": "media/icon.png",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
