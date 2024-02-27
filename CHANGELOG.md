@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.6
+
+- Add primary group to the start of group list if it's missing
+
 ## 0.0.5
 
 - Updated CHANGELOG and description
