@@ -23,7 +23,7 @@ export class GroupStore {
 		}[]>('groups', []);
 		
 		if (storedGroups[0]?.name !== '')
-			storedGroups.push({
+			storedGroups.unshift({
 				name: '',
 				items: []
 			});
