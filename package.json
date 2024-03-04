@@ -31,25 +31,25 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "shortcuts.add",
+				"command": "file-shortcuts.add",
 				"title": "Add Shortcut",
 				"icon": "$(add)"
 			},
 			{
-				"command": "shortcuts.rename",
+				"command": "file-shortcuts.rename",
 				"title": "Rename..."
 			},
 			{
-				"command": "shortcuts.remove",
+				"command": "file-shortcuts.remove",
 				"title": "Remove",
 				"icon": "$(close)"
 			},
 			{
-				"command": "shortcuts.open",
+				"command": "file-shortcuts.open",
 				"title": "Open"
 			},
 			{
-				"command": "shortcuts.refresh",
+				"command": "file-shortcuts.refresh",
 				"title": "Refresh Shortcuts",
 				"icon": "$(refresh)"
 			}
@@ -57,7 +57,7 @@
 		"views": {
 			"explorer": [
 				{
-					"id": "shortcuts",
+					"id": "file-shortcuts",
 					"name": "Shortcuts",
 					"contextualTitle": "Shortcuts",
 					"icon": "media/icon.svg"

@@ -52,11 +52,11 @@ export function activate(localContext: vscode.ExtensionContext) {
 	nodeProvider = new ShortcutNodeProvider(groupStore);
 
 	context.subscriptions.push(
-		vscode.window.registerTreeDataProvider('shortcuts', nodeProvider),
-		vscode.commands.registerCommand('shortcuts.add', addShortcut),
-		vscode.commands.registerCommand('shortcuts.rename', renameGroup),
-		vscode.commands.registerCommand('shortcuts.remove', removeShortcut),
-		vscode.commands.registerCommand('shortcuts.open', openShortcut),
-		vscode.commands.registerCommand('shortcuts.refresh', refreshShortcut)
+		vscode.window.registerTreeDataProvider('file-shortcuts', nodeProvider),
+		vscode.commands.registerCommand('file-shortcuts.add', addShortcut),
+		vscode.commands.registerCommand('file-shortcuts.rename', renameGroup),
+		vscode.commands.registerCommand('file-shortcuts.remove', removeShortcut),
+		vscode.commands.registerCommand('file-shortcuts.open', openShortcut),
+		vscode.commands.registerCommand('file-shortcuts.refresh', refreshShortcut)
 	);
 }
