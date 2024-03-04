@@ -153,7 +153,5 @@ export class GroupStore {
 		
 		groups[index].name = newName;
 		this.setInArea(area, groups);
-		
-		return;
 	}
 }
