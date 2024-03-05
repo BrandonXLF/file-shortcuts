@@ -38,7 +38,7 @@ export class Shortcut extends vscode.TreeItem {
 
 	public command = {
 		title: 'Open',
-		command: 'shortcuts.open',
+		command: 'file-shortcuts.open',
 		arguments: [this]
 	};
 

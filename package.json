@@ -67,54 +67,54 @@
 		"menus": {
 			"explorer/context": [
 				{
-					"command": "shortcuts.add",
+					"command": "file-shortcuts.add",
 					"when": "!explorerResourceIsFolder",
 					"group": "7_modification"
 				}
 			],
 			"editor/title/context": [
 				{
-					"command": "shortcuts.add",
+					"command": "file-shortcuts.add",
 					"when": "resourceSet",
 					"group": "7_modification"
 				}
 			],
 			"view/title": [
 				{
-					"command": "shortcuts.add",
+					"command": "file-shortcuts.add",
 					"when": "view == shortcuts",
 					"group": "navigation@1"
 				},
 				{
-					"command": "shortcuts.refresh",
+					"command": "file-shortcuts.refresh",
 					"when": "view == shortcuts",
 					"group": "navigation@2"
 				}
 			],
 			"view/item/context": [
 				{
-					"command": "shortcuts.remove",
+					"command": "file-shortcuts.remove",
 					"when": "view == shortcuts && viewItem != top",
 					"group": "inline"
 				},
 				{
-					"command": "shortcuts.remove",
+					"command": "file-shortcuts.remove",
 					"when": "view == shortcuts && viewItem != top",
 					"group": "navigation@2"
 				},
 				{
-					"command": "shortcuts.rename",
+					"command": "file-shortcuts.rename",
 					"when": "view == shortcuts && viewItem == group",
 					"group": "navigation@3"
 				}
 			],
 			"commandPalette": [
 				{
-					"command": "shortcuts.remove",
+					"command": "file-shortcuts.remove",
 					"when": "false"
 				},
 				{
-					"command": "shortcuts.open",
+					"command": "file-shortcuts.open",
 					"when": "false"
 				}
 			]
