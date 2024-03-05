@@ -1,5 +1,14 @@
 # Change Log
 
+## 0.0.8
+
+- Correct command IDs
+
+## 0.0.7
+
+- Bundle extension code into a single file
+- Use more unique names for commands
+
 ## 0.0.6
 
 - Add primary group to the start of group list if it's missing
