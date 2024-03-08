@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.9
+
+- Commands appear on the shortcuts view again
+
 ## 0.0.8
 
 - Correct command IDs
