@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.0.0
+
+- Release version 1
+- Update dependencies
+
 ## 0.0.9
 
 - Commands appear on the shortcuts view again
