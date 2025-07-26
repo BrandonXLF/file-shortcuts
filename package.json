@@ -128,8 +128,8 @@
 		"watch": "node ./esbuild.js --watch"
 	},
 	"devDependencies": {
-		"@types/node": "^12.11.7",
-		"@types/vscode": "^1.51.0",
+		"@types/node": "12.11.7",
+		"@types/vscode": "1.51.0",
 		"@typescript-eslint/eslint-plugin": "^4.1.1",
 		"@typescript-eslint/parser": "^4.1.1",
 		"esbuild": "^0.25.8",
